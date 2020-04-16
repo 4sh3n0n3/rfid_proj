@@ -14,7 +14,7 @@ def add_allowed(text):
         _stop_reader()
         id, txt = reader.write(text)
         if not cursor.execute(SELECT_FROM_ALLOWED_IDS_BY_ID, [(str(id))]).fetchone():
-            cursor.execute(INSERT_ALLOWED_IDS, (str(id)))
+            cursor.execute(INSERT_ALLOWED_IDS, (str(id), str(text)))
             conn.commit()
             response += " Добавление успешно: id - {}, text - {}".format(str(id), str(txt))
         else:
