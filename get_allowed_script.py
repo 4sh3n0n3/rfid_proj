@@ -5,5 +5,5 @@ import sqlite3
 
 def get_allowed_ids():
     conn, cursor = _get_connection()
-    return cursor.execute("SELECT * FROM allowed_ids")
+    return cursor.execute("SELECT * FROM allowed_ids").fetchall()
 

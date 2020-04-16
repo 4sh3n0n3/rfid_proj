@@ -14,6 +14,7 @@ def write_to_token(text):
         conn, cursor = _get_connection()
         if cursor.execute(SELECT_FROM_ALLOWED_IDS_BY_ID, [(str(id))]):
             cursor.execute(UPDATE_ALLOWED_IDS_TEXT_BY_ID, (str(id), str(text)))
+            conn.commit()
         response += "id - {}. Успешно"
         _start_reader()
     except:
